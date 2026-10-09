@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#f5f6f8"><title>资金罗盘 · 市场与板块</title></head>
+<body>
+<div class="app">
+<header class="header"><a class="brand" href="/" aria-label="资金罗盘首页"><span class="brand-icon">◈</span>资金罗盘<span class="edition">MARKET PULSE</span></a><span class="header-note">看清成交，跟踪资金</span></header>
+<main>
+<section class="intro"><div><div class="eyebrow">市场总览 / OVERVIEW</div><h1>资金正在流向哪里<span>？</span></h1><p>从大盘成交到板块动向，一屏掌握市场脉搏。</p></div><button id="refresh" class="refresh">↻ 刷新数据</button></section>
+<section class="market-grid" aria-label="大盘概况"><article class="total-card"><div class="card-label">沪深两市成交额 <span>当日累计</span></div><div id="total-amount" class="total-number">—</div><p>上证 + 深证成交额 · 不含北交所</p><div class="decor-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article><div id="indices" class="indices"></div></section>
+<div id="market-status" class="market-status" role="status">正在读取大盘数据…</div>
+<section class="ranking-panel" aria-labelledby="ranking-title">
+<div class="panel-heading"><div><div class="eyebrow">SECTOR RANKING</div><h2 id="ranking-title">板块排行榜</h2></div><div class="segment" id="category" aria-label="板块类型"><button data-industry="true" aria-pressed="true">行业板块</button><button data-industry="false" aria-pressed="false">概念板块</button></div></div>
+<div class="toolbar"><div class="rank-tabs" id="metrics" aria-label="排名指标"><button data-metric="volume" aria-pressed="true">成交量排名</button><button data-metric="flow" aria-pressed="false">主力净流入</button></div><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索板块名称或代码" aria-label="搜索板块名称或代码"></label></div>
+<div class="rank-meta"><span id="rank-description">按当日累计成交量由高到低排列</span><button id="direction" aria-label="切换排名顺序">降序 ↓</button></div>
+<div id="rank-status" role="status" class="rank-status">正在加载行业板块…</div>
+<div class="table-wrap"><table><thead><tr><th class="rank-col">排名</th><th>板块名称</th><th id="amount-heading">成交量（手）</th><th id="flow-heading">主力净流入</th><th>涨跌幅</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div id="empty" class="empty" hidden>没有匹配的板块，试试其他名称。</div>
+<div class="panel-footer"><span id="count">—</span><button id="more" hidden>显示更多 ↓</button><span id="refresh-cadence">每 60 秒自动更新</span></div>
+</section>
+<section class="reading-note"><span class="note-icon">i</span><p><strong>读懂这张榜单</strong>成交量以手为单位，反映交易活跃度；主力净流入为超大单与大单净流入之和。红色代表上涨 / 流入，绿色代表下跌 / 流出。概念板块成分可能重叠，成交量不能相加作为大盘总量。</p></section>
+</main><footer class="footer"><span>◈ 资金罗盘</span><span>数据来源：东方财富 · 行情可能延迟 · 仅供研究参考</span></footer>
+</div><script type="module" src="/src/main.ts"></script>
+</body></html>

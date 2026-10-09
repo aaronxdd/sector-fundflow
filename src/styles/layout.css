@@ -1,0 +1,184 @@
+/* 版面骨架：顶栏 → KPI 卡片行 → 分段控件 → 卡片模块。
+   层次由「白卡片 + 柔和阴影 + 圆角」表达（Dimensional Layering），不靠分隔线硬切。 */
+
+.app {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 30px 26px 52px;
+}
+
+/* ---------- 顶栏 ---------- */
+.masthead {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  align-items: center;
+  gap: 28px;
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.masthead h1 {
+  margin: 0;
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.masthead-tagline {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+.masthead-status {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: var(--fs-sm);
+  text-align: right;
+}
+.status-line { color: var(--muted); white-space: nowrap; }
+.status-line b { color: var(--text); font-weight: 600; }
+.status-line .k { display: inline-block; min-width: 4.6em; }
+.status-line .sep { margin: 0 6px; color: var(--muted-2); }
+
+/* 主状态做成绿色药丸徽标：在线状态一眼可辨 */
+#status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 9px 1px 8px;
+  border-radius: 999px;
+  background: var(--live-soft);
+  color: var(--down-strong);
+  font-weight: 600;
+}
+#status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.16);
+  animation: live-pulse 2s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.masthead-actions { display: flex; gap: 8px; align-items: center; }
+
+/* ---------- KPI 卡片行 ---------- */
+.lead {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.lead-item {
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.lead-item:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-1px);
+}
+.lead-k {
+  color: var(--muted);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.lead-v {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+}
+.lead-m {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+.lead-v.up { color: var(--up); }
+.lead-v.down { color: var(--down); }
+
+/* ---------- 分段控件（欧美 SaaS 的标签页形态）---------- */
+.tabs {
+  display: inline-flex;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  margin-bottom: 20px;
+}
+.section { display: none; }
+.section.active { display: block; }
+
+/* ---------- 模块头 ---------- */
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.module-title h2 {
+  margin: 0;
+  font-size: var(--fs-lg);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+.module-title p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: var(--fs-base);
+  line-height: 1.68;
+  max-width: 68ch;
+}
+.timestamp {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  text-align: right;
+  min-width: 150px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 栅格 ---------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.two-col > * { min-width: 0; }
+
+@media (max-width: 900px) {
+  .masthead { grid-template-columns: 1fr; align-items: start; gap: 14px; }
+  .masthead-status { text-align: left; }
+  .status-line .k { min-width: 4em; }
+  .lead { grid-template-columns: repeat(2, 1fr); }
+  .two-col { grid-template-columns: 1fr; gap: 16px; }
+}
+
+@media (max-width: 560px) {
+  .app { padding: 20px 14px 36px; }
+  .lead { grid-template-columns: 1fr; }
+  .tabs { width: 100%; }
+  .tab-btn { flex: 1; text-align: center; }
+}

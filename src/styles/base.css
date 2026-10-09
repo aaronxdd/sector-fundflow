@@ -1,0 +1,103 @@
+/* 基础层：浅色底、字体栈、原生控件归一。 */
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 顶部一层极淡的靛蓝光晕——欧美 SaaS 常见的品牌氛围，几乎察觉不到 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    1100px 360px at 50% -140px,
+    rgba(99, 102, 241, 0.07),
+    transparent 70%
+  );
+}
+
+/* 数据数字等宽对齐；中文在等宽栈里自动回落到黑体 */
+b, td, th, .num, input[type="number"] {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: var(--accent-strong);
+  text-decoration-color: rgba(99, 102, 241, 0.35);
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-color: var(--accent); }
+
+h1, h2, h3 {
+  font-family: var(--sans);
+  font-weight: 650;
+  letter-spacing: -0.011em;
+  line-height: 1.3;
+}
+
+p { margin: 0; }
+
+.prose { max-width: 62ch; }
+
+input, button, select { font: inherit; }
+
+input[type="number"] {
+  width: 58px;
+  padding: 3px 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+input::placeholder { color: var(--muted-2); }
+
+/* 键盘可见焦点：统一走强调色环 */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+footer {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+}
+
+/* 尊重系统的减少动效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

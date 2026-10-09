@@ -1,0 +1,257 @@
+/* 组件层：欧美 SaaS 形态——白卡片、中圆角、柔和阴影、药丸控件。
+   彩色分工——靛蓝 = 可交互，红绿 = 数据方向。 */
+
+/* ---------- 按钮 ---------- */
+.btn {
+  padding: 7px 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+  transition: background .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.btn:hover { background: var(--accent-strong); box-shadow: var(--shadow-2); }
+.btn:disabled { opacity: .45; cursor: default; box-shadow: none; }
+.btn:disabled:hover { background: var(--accent); box-shadow: none; }
+
+.btn.ghost {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--text-2);
+  box-shadow: var(--shadow-1);
+}
+.btn.ghost:hover {
+  background: var(--surface-2);
+  border-color: var(--muted-2);
+  color: var(--text);
+}
+.btn.ghost:disabled:hover { background: var(--surface); border-color: var(--border-strong); color: var(--text-2); }
+
+/* ---------- 分段控件按钮 ---------- */
+.tab-btn {
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, box-shadow .15s ease;
+}
+.tab-btn span { display: block; }
+.tab-btn .tab-note {
+  margin-top: 1px;
+  color: var(--muted-2);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.tab-btn:hover { color: var(--text-2); }
+.tab-btn.active {
+  background: var(--surface);
+  color: var(--accent-strong);
+  box-shadow: var(--shadow-1);
+}
+.tab-btn.active .tab-note { color: var(--muted); }
+
+/* ---------- 模块卡片 ---------- */
+.panel {
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+  margin-bottom: 16px;
+}
+.panel h3 {
+  margin: 0;
+  font-size: var(--fs-md);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.panel-sub {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  max-width: 74ch;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+/* 徽标：药丸，不是文字后缀 */
+.tag {
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: var(--fs-xs);
+  white-space: nowrap;
+}
+
+/* ---------- 图表区：白卡片 + 浅网格 ---------- */
+.chart {
+  position: relative;
+  width: 100%;
+  min-height: 140px;
+  padding: 12px 8px 4px;
+  background: var(--plate);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.chart svg { display: block; width: 100%; height: auto; }
+
+.crosshair {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(15, 23, 42, 0.22);
+  pointer-events: none;
+  display: none;
+  z-index: 2;
+}
+
+.hover-box {
+  position: absolute;
+  z-index: 3;
+  display: none;
+  min-width: 158px;
+  max-width: 250px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  line-height: 1.58;
+  pointer-events: none;
+  box-shadow: var(--shadow-3);
+}
+.hover-box .t {
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.hover-box .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  white-space: nowrap;
+}
+.hover-box .row .nm { overflow: hidden; text-overflow: ellipsis; }
+.hover-box .nm i {
+  display: inline-block;
+  width: 9px;
+  height: 2px;
+  margin-right: 7px;
+  vertical-align: 3px;
+}
+
+/* ---------- 表格 ---------- */
+.table-wrap { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-base);
+}
+td {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  vertical-align: baseline;
+}
+tr:last-child td { border-bottom: 0; }
+tbody tr { transition: background .12s ease; }
+tbody tr:hover td { background: var(--surface-2); }
+
+td.v { text-align: right; white-space: nowrap; padding-left: 16px; }
+td.x { width: 46px; text-align: right; white-space: nowrap; }
+
+.in { color: var(--up); }
+.out { color: var(--down); }
+
+.empty {
+  padding: 12px 0;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+td.x .b {
+  padding: 0 5px;
+  color: var(--muted-2);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: color .15s ease;
+}
+td.x .b:hover { color: var(--up); }
+
+td.v.empty { color: var(--muted-2); font-size: var(--fs-sm); }
+
+/* ---------- 输入行 ---------- */
+.blockbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.blockbar-title {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.blockbar input {
+  flex: 1;
+  min-width: 200px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--fs-base);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.blockbar input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* ---------- 已选标签：药丸 ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+}
+.chip b { color: var(--muted-2); cursor: pointer; }
+.chip b:hover { color: var(--up); }
+.chips .empty { padding: 0; }

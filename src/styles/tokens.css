@@ -1,0 +1,71 @@
+/* 设计变量：全局唯一的颜色 / 字体 / 尺度来源。
+   取向：欧美 SaaS 产品界面（浅底 + 白卡片 + 靛蓝强调色）。
+   依据 ui-ux-pro-max 检索：styles.csv "Dimensional Layering"（卡片 + 四层阴影 +
+   空间层次）、"Bento Grids"（圆角卡片 + 柔和边框）；colors.csv "Micro SaaS"
+   （Primary #6366F1 / Secondary #818CF8）。
+   彩色分工——靛蓝只用于交互（按钮、焦点、激活态），红绿只用于数据方向。 */
+:root {
+  /* ---------- 页面与面板 ---------- */
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --surface-3: #eef2f7;
+
+  /* ---------- 文字 ---------- */
+  --text: #0f172a;
+  --text-2: #334155;
+  --muted: #64748b;
+  --muted-2: #94a3b8;
+
+  /* ---------- 边框 ---------- */
+  --border: #e5e9f0;
+  --border-strong: #cfd8e3;
+
+  /* ---------- 品牌强调色：靛蓝，只表达「可交互」---------- */
+  --accent: #6366f1;
+  --accent-strong: #4f46e5;
+  --accent-soft: rgba(99, 102, 241, 0.10);
+
+  /* ---------- 数据色：A 股约定，红 = 流入 / 涨，绿 = 流出 / 跌。
+     白底上取 600 档保证对比度。---------- */
+  --up: #dc2626;
+  --up-strong: #b91c1c;
+  --down: #16a34a;
+  --down-strong: #15803d;
+
+  /* ---------- 状态 ---------- */
+  --live: #16a34a;
+  --live-soft: rgba(22, 163, 74, 0.12);
+
+  /* ---------- 图表（白底细网格）---------- */
+  --plate: #ffffff;
+  --plate-2: #ffffff;
+  --plate-text: #0f172a;
+  --plate-muted: #94a3b8;
+  --plate-rule: #e9eef5;
+
+  /* ---------- 形态：欧美 SaaS 用中圆角 + 柔和多层阴影 ---------- */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+
+  --shadow-1: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-2: 0 4px 12px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-3: 0 16px 40px rgba(15, 23, 42, 0.14), 0 2px 8px rgba(15, 23, 42, 0.06);
+
+  /* ---------- 字体 ----------
+     数字用等宽（终端血统的克制保留），正文走系统 UI 字体。
+     不引 Google Fonts——国内网络不可达，全部本地栈。 */
+  --mono: "SF Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas,
+    "PingFang SC", "Microsoft YaHei", monospace;
+  --sans: -apple-system, "Inter", "Segoe UI", Roboto, "Helvetica Neue",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+  /* ---------- 排版尺度 ---------- */
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-base: 13px;
+  --fs-md: 15px;
+  --fs-lg: 20px;
+  --fs-xl: 24px;
+}

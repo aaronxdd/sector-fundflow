@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --base=/sector-fundflow/
+        run: npm run build -- --base=/fundflow/
 
       - name: Set up Pages
         uses: actions/configure-pages@v5

@@ -70,3 +70,5 @@ npm run smoke
 # GitHub Pages 部署
 
 项目已配置 GitHub Actions。推送到 `main` 分支后，工作流会自动构建并部署到 GitHub Pages。
+
+生产访问地址：`https://xuyunxi.top/fundflow/`。Cloudflare Worker 将该路径代理到 GitHub Pages。
